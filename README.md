@@ -101,6 +101,6 @@ We can use instead:
         }
             self.tableView.reloadData()
     }
-    ```
+ ```
 
 Build and Run the project, enter a search query and the results are being displayed.
