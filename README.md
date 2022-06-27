@@ -90,4 +90,17 @@ func updateSearchResults(for searchController: UISearchController) {
 ```
 
 The updateSearchResults(for:_) method is called when the user updates the Search bar with input. In this method we will handle the search filtering of our search term. NSPredicate is an sort of expression that handles the search criteria. "c" means case-sensitive. The results are then assigned to the filteredTableData array and the Table View is reloaded.
+
+We can use instead:
+```
+    // MARK: implementation of protocol UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredTableData.removeAll(keepingCapacity: false)
+         filteredTableData = tableData.filter { word in
+          return word.contains(searchController.searchBar.text!)
+        }
+            self.tableView.reloadData()
+    }
+    ```
+
 Build and Run the project, enter a search query and the results are being displayed.
