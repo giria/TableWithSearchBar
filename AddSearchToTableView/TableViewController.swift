@@ -8,19 +8,7 @@
 import UIKit
 
 class TableViewController: UITableViewController,  UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        filteredTableData.removeAll(keepingCapacity: false)
 
-//            let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-//            let array = (tableData as NSArray).filtered(using: searchPredicate)
-         //   filteredTableData = array as! [String]
-  //
-         filteredTableData = tableData.filter { word in
-          return word.contains(searchController.searchBar.text!)
-        }
-        print (" hh: \(filteredTableData) and count: \(filteredTableData.count) ")
-            self.tableView.reloadData()
-    }
     
     
     let tableData = ["One","Two","Three","Twenty-One"]
@@ -51,6 +39,15 @@ class TableViewController: UITableViewController,  UISearchResultsUpdating {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
        
+    }
+    
+    // MARK: implementation of protocol UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredTableData.removeAll(keepingCapacity: false)
+         filteredTableData = tableData.filter { word in
+          return word.contains(searchController.searchBar.text!)
+        }
+            self.tableView.reloadData()
     }
     
   
